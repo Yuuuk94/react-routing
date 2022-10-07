@@ -3,8 +3,9 @@ import Routes from "./components/Routes";
 import { useEffect, useState } from "react";
 
 const App: React.FC = () => {
-  const [path, setPath] = useState<string>(window.location.pathname);
+  const [path, setPath] = useState<string>("");
   useEffect(() => {
+    setPath(window.location.pathname);
     // define callback as separate function so it can be removed later with cleanup function
     const goAbout = () => {
       setPath("/about");
@@ -13,13 +14,13 @@ const App: React.FC = () => {
       setPath("/");
     };
 
-    window.addEventListener("/", gomain);
-    window.addEventListener("/about", goAbout);
+    window.addEventListener("main", gomain);
+    window.addEventListener("about", goAbout);
 
     // clean up event listener
     return () => {
-      window.removeEventListener("/", gomain);
-      window.addEventListener("/about", goAbout);
+      window.removeEventListener("main", gomain);
+      window.addEventListener("about", goAbout);
     };
   }, []);
   return (

@@ -1,7 +1,7 @@
 const About: React.FC = () => {
   function goMain() {
     history.pushState({}, "", "/");
-    const navEvent = new PopStateEvent("/");
+    const navEvent = new PopStateEvent("main");
     window.dispatchEvent(navEvent);
   }
   return (
